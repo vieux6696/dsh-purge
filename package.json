@@ -1,0 +1,98 @@
+{
+  "name": "dsh-purge",
+  "version": "1.1.82",
+  "description": "DeepSeek Harness 鐮寸敳锛氳鎵€鏈夋ā鍨嬮兘鑳界牬鐢诧紝涓嶅悓妯″瀷鍙崲涓嶅悓鎻愮ず璇嶏紱榛樿鎻愮ず璇嶉潰鍚戝浗妯°€屽皬鐮侀叡銆嶃€侸ailbreak for every model 鈥?swap prompts per model. 姹?Star 鏀惰棌 猸?濡傝浜屽紑锛岃鏌ョ湅缃插悕瑕佹眰閮ㄥ垎",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": "./client.js",
+    "./redteam": "./lib/redteam/index.js",
+    "./redteam/store": "./lib/redteam/store.js",
+    "./redteam/ui": "./lib/redteam/ui.js",
+    "./redteam/tools": "./lib/redteam/tools.js",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "dsh-purge": "bin/dsh-purge.js"
+  },
+  "files": [
+    "lib",
+    "!lib/default-prompt-inject.md",
+    "bin",
+    "docs",
+    "presets",
+    "scripts",
+    "client.js",
+    "cordis.patch.yml",
+    "screenshots.json",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "embed-prompt": "node scripts/embed-default-prompt.mjs",
+    "build:client": "node scripts/build-client.mjs",
+    "postinstall": "node scripts/ensure-profile-bundle.mjs",
+    "test": "node --test"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-plugins",
+    "缃戠粶瀹夊叏",
+    "绾㈤槦璇勬祴",
+    "llm-security",
+    "harness-security",
+    "deepseek-harness",
+    "red-team",
+    "instructions",
+    "rules",
+    "prompt-eval",
+    "agent"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vieux6696/dsh-purge.git"
+  },
+  "homepage": "https://github.com/vieux6696/dsh-purge#readme",
+  "bugs": {
+    "url": "https://github.com/vieux6696/dsh-purge/issues"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    },
+    "install": {
+      "preferred": "tarball",
+      "tarball": "https://github.com/vieux6696/dsh-purge/releases/latest/download/dsh-purge-1.1.82.tgz",
+      "zip": "https://codeload.github.com/vieux6696/dsh-purge/zip/refs/heads/master",
+      "git": "https://github.com/vieux6696/dsh-purge.git"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dshTarget": "0.2.1-rc.3"
+}

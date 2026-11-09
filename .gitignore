@@ -1,0 +1,6 @@
+# build artifacts
+node_modules/
+*.tgz
+
+# state files not part of the package
+.applied.json
